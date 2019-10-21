@@ -1,0 +1,53 @@
+version: '3.2'
+services:
+  wetterservice1:
+    build: .
+    environment:
+     - env_var_ip1="172.24.0.10"
+     - env_var_ip2="172.24.0.11"
+    networks:
+        wetterstation_vs_network:
+            ipv4_address: 172.24.0.9
+    ports:
+     - 9091:9091
+    expose:
+     - "9092"
+    links:
+     - wetterservice2
+     - wetterservice3
+    volumes:
+     - ./data:/data
+  wetterservice2:
+    build: .
+    environment:
+     - env_var_ip1="172.24.0.9"
+     - env_var_ip2="172.24.0.11"
+    networks:
+        wetterstation_vs_network:
+            ipv4_address: 172.24.0.10
+    expose:
+     - "9092"
+    links:
+     - wetterservice3
+    volumes:
+     - ./data:/data
+  wetterservice3:
+    build: .
+    environment:
+     - env_var_ip1="172.24.0.9"
+     - env_var_ip2="172.24.0.10"
+    networks:
+        wetterstation_vs_network:
+            ipv4_address: 172.24.0.11
+    expose:
+     - "9092"
+    volumes:
+     - ./data:/data
+networks:
+    wetterstation_vs_network:
+        external:
+            name: wetterstation_vs_network
+#docker-compose up -d --scale sensor=3
+#starte den sensor container 3 mal
+
+

@@ -1,0 +1,49 @@
+version: '3.2'
+services:
+  sensor_wind:
+    build: .
+    environment:
+     - env_var_type="wind"
+     - env_var_ip="172.24.0.6"
+     - env_var_id="0"
+    networks:
+        wetterstation_vs_network:
+            ipv4_address: 172.24.0.12
+    expose:
+      - "9876"
+  sensor_luft:
+    build: .
+    environment:
+     - env_var_type="luft"
+     - env_var_ip="172.24.0.6"
+     - env_var_id="1"
+    networks:
+        wetterstation_vs_network:
+            ipv4_address: 172.24.0.13
+  sensor_regen:
+    build: .
+    environment:
+     - env_var_type="regen"
+     - env_var_ip="172.24.0.6"
+     - env_var_id="2"
+    networks:
+        wetterstation_vs_network:
+            ipv4_address: 172.24.0.14
+  sensor_temp:
+    build: .
+    environment:
+     - env_var_type="temp"
+     - env_var_ip="172.24.0.6"
+     - env_var_id="3"
+    networks:
+      - wetterstation_vs_network
+
+networks:
+    wetterstation_vs_network:
+        external:
+            name: wetterstation_vs_network
+
+
+
+
+

@@ -1,0 +1,53 @@
+version: '3.5'
+services:
+  wetterstation1:
+    build: .
+    environment:
+     - env_var_ip="172.24.0.9"
+     - env_var_ip_2="172.24.0.10"
+     - env_var_ip_3="172.24.0.11"
+    networks:
+        wetterstation_vs_network:
+            ipv4_address: 172.24.0.6
+    expose:
+      - "9876"
+    ports:
+      - "8080:8080"
+  wetterstation2:
+    build: .
+    environment:
+     - env_var_ip="172.24.0.10"
+     - env_var_ip_2="172.24.0.10"
+     - env_var_ip_3="172.24.0.11"
+    networks:
+        wetterstation_vs_network:
+            ipv4_address: 172.24.0.7
+    expose:
+      - "9876"
+  wetterstation3:
+    build: .
+    environment:
+     - env_var_ip="172.24.0.11"
+     - env_var_ip_2="172.24.0.10"
+     - env_var_ip_3="172.24.0.11"
+    networks:
+        wetterstation_vs_network:
+            ipv4_address: 172.24.0.8
+    expose:
+      - "9876"
+networks:
+  wetterstation_vs_network:
+    name: wetterstation_vs_network
+    external: false
+    ipam:
+        config:
+            - subnet: 172.24.0.0/16
+#    ports:
+#     - target: 9876
+#       published: 8080
+#       protocol: udp
+#       mode: host
+
+#docker-compose up -d --scale sensor=3
+#starte den sensor container 3 mal
+

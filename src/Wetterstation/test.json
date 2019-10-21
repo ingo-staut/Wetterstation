@@ -1,0 +1,13 @@
+{
+  "sensors":[
+    {"type":"wind","messageId":0,"value":52,"id":1},
+    {"type":"wind","messageId":1,"value":147,"id":2},
+    {"type":"wind","messageId":2,"value":161,"id":3},
+    {"type":"regen","messageId":3,"value":22,"id":4},
+    {"type":"wind","messageId":0,"value":183,"id":5},
+    {"type":"temp","messageId":0,"value":24,"id":6},
+    {"type":"wind","messageId":1,"value":12,"id":7},
+    {"type":"wind","messageId":2,"value":82,"id":8},
+    {"type":"wind","messageId":3,"value":135,"id":9}
+    ]
+}
