@@ -23,10 +23,8 @@ Der Fokus soll auf der Kommunikation der verteilten Komponenten untereinander so
 ### Kommunikation mit der Wetterstation
 
 ##### MQTT
-1. Publisher
-1. CliParameters
-1. CliProcessor
-1. Constants
+1. MqttPublisher
+1. MqttParam
 
 ### Aufbau einer Sensor-Nachricht
 1. NachrichtenId
@@ -90,10 +88,8 @@ Unter `data/report.json` findet man die persistent gespeicherten Sensordaten (au
 ### Kommunikation mit den Sensoren
 
 ##### MQTT
-1. Subscriber
-1. CliParameters
-1. CliProcessor
-1. Constants
+1. MqttSubscriber
+1. MqttParam
 
 ### HTTPServer
 1. HTTPServer
